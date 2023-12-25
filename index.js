@@ -218,10 +218,10 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", (req, res) => {
-  const { criteria } = req.body;
+  const matchingStartups = predictStartup(req.body.criteria);
 
   // Return the matching startups
-  res.json({ criteria, matching: matchingStartups });
+  res.json({ criteria: req.body.criteria, matching: matchingStartups });
 });
 
 app.listen(process.env.PORT || 3000, () => {
